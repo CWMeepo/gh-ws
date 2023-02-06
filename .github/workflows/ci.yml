@@ -16,8 +16,6 @@ jobs:
         command: [ lint, "test:ci", e2e ]
     runs-on: ubuntu-latest
 
-
-
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -45,3 +43,8 @@ jobs:
 
       - name: Test
         run: yarn ${{ matrix.command }}
+
+  echo:
+    uses: "CWMeepo/github-actions/.github/workflows/_echo.yml@test"
+    with:
+      message: "Some message"
