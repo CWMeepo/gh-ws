@@ -45,6 +45,6 @@ jobs:
         run: yarn ${{ matrix.command }}
 
   echo:
-    uses: ".github/workflows/_echo.yml@test"
+    uses: "CWMeepo/gh-ws/.github/workflows/_echo.yml@test"
     with:
       message: "Some message"
