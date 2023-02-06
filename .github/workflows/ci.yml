@@ -7,6 +7,9 @@ on:
 
 jobs:
   unit-test:
+    strategy:
+      matrix:
+        command: [lint, "test:ci", e2e]
     runs-on: ubuntu-latest
 
     steps:
@@ -24,46 +27,4 @@ jobs:
         run: yarn install
 
       - name: Test
-        run: yarn test:ci
-
-  lint:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: Setup NodeJS 16
-        uses: actions/setup-node@v1
-        with:
-          node-version: 16
-
-      - name: Install dependencies
-        run: yarn install
-
-      - name: Lint
-        run: yarn lint:ci
-
-  e2e:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: Setup NodeJS 16
-        uses: actions/setup-node@v1
-        with:
-          node-version: 16
-
-      - name: Install dependencies
-        run: yarn install
-
-      - name: e2e
-        run: yarn e2e
-
-
+        run: yarn ${{ matrix.command }}
