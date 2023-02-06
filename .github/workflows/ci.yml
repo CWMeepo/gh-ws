@@ -41,6 +41,11 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
+      - uses: ./tools/custom-actions/e2e/
+        id: hello
+        with:
+        who-to-greet: 'Mona the Octocat'
+
       - name: Test
         run: yarn ${{ matrix.command }}
 

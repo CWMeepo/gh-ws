@@ -2,7 +2,7 @@ name: 'Hello world'
 description: ''
 inputs:
   who-to-greet:
-    description: '2'
+    description: 'test'
     required: true
     default: 'World'
 
